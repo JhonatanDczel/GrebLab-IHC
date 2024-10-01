@@ -1,4 +1,4 @@
-# JSPlaygound (aka "GregLab")
+# JSPlaygound (aka "GregLab") - Interface Improvement IHC
 A simple and kid-friendly pair-programming tool for use in teaching sessions. Kids code in Javascript with syntax highlighting, and complete built-in exercises on a variety of programming topics. Teaching assistants can view and edit the code of all students assigned to their breakout room.
 
 The app is lovingly dubbed "GregLab" by the CS in English organization as it was developed as a replacement for the more complex but clunkier website AppLab.
