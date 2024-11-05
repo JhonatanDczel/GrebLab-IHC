@@ -1,111 +1,113 @@
 <html>
 
 <head>
-    <title>CS in English</title>
+    <title>Página Principal - Estudiante</title>
     <link rel="stylesheet" href="index.css">
     <link href="prism/prism.css" rel="stylesheet" />
+    
 </head>
+<script src="scripts/auth.js"></script> <!-- Archivo para verificación de autenticación -->
 
 <body id="student-body">
-    <h1>CS in English: Student View</h1>
+    <h1>Página de Estudiantes</h1>
+    <h2>Inicio de Sesión</h2>
+
     <div id="login-form">
         <div class="session-container">
-            <h2>Current Session: Maps!</h1>
-            Select your breakout room and name!<br/><br/>
-            <label for="room-select">Breakout Room:</label>
+            <h2>Secciones Disponibles: Mapas</h2>
+            <p>Seleccione el grupo asignado:</p>
+            <label for="room-select">Sala de grupo:</label>
             <select id="room-select">
-                <option selected disabled></option>
+                <option selected disabled>Seleccione una sala...</option>
                 <option>L1-1</option>
                 <option>L1-2</option>
                 <option>L2-1</option>
                 <option>L2-2</option>
                 <option>L2-3</option>
             </select>
-            <br />
-            <label for="name-select">Name:</label>
-            <input id="name-select">
-            <br />
-            <button id="login-button" class="login-button">Get Started!</button>
+            <br /><br />
+            <label for="name-select">Nombre del Estudiante:</label>
+            <input id="name-select" placeholder="Escriba su nombre">
+            <br /><br />
+            <button id="login-button" class="login-button">¡Ingresar!</button>
         </div>
         <div class="session-container">
-            <h2>Review Previous Sessions</h2>
-            <div>Select which session you would like to review!</div><br/>
+            <h2>Repaso de Temas del Curso</h2>
+            <p>Seleccione un tema para repasar:</p>
             <select id="lesson-picker">
-                <option value="Lists">Lists</option>
-                <option value="ForLoops">For Loops</option>
-                <option value="Functions">Functions</option>
-                <option value="UnitTests">Unit Tests</option>
-                <option value="AdvUnitTests">Unit Tests pt. 2</option>
-            </select><br/>
-            <button id="review-login-button" class="login-button">Review</button>
+                <option value="Lists">Listas</option>
+                <option value="ForLoops">Ciclos For</option>
+                <option value="Functions">Funciones</option>
+                <option value="UnitTests">Pruebas Unitarias</option>
+                <option value="AdvUnitTests">Pruebas Unitarias - Parte 2</option>
+            </select>
+            <br /><br />
+            <button id="review-login-button" class="login-button">¡Repasar!</button>
         </div>
     </div>
+    
     <div id="logged-in-view">
-        <h6>This page contains a custom Javascript interpreter. <br />Notably has the addition of a print() function, to
-            avoid dealing with the developer console. <br /><a href="/ta.html">Go To TA View</a></h6>
-        <br>Your Name:
-        <span id=user-name></span>
+        <p>Bienvenido/a: <span id="user-name"></span></p>
 
-        <div class=" section" id="code-section">
-            <h2>Code</h2>
-            <h4>Examples</h4>
+        <div class="section" id="code-section">
+            <h2>Editor de Código</h2>
+            <h4>Ejemplos de Código</h4>
             <div id="samples">
-                <!-- Buttons added programmatically -->
+                <!-- Botones agregados programáticamente -->
             </div>
 
-            <h4>Activities</h4>
+            <h4>Actividades</h4>
             <div id="activities">
-                <!-- Buttons added programmatically -->
-            </div>
+                <!-- Botones agregados programáticamente -->
+            </div>  
 
-            <div id="instructions"></div>
+            <div id="instructions"></div>   
 
             <div id="code-container">
-                <textarea id="code-area" placeholder="Enter code here!"></textarea>
+                <textarea id="code-area" placeholder="Escriba su código aquí..."></textarea>
                 <div id="rendered-code-container">
                 </div>
             </div>
+
             <div id="test-cases">
-                <h4>Test Cases</h4>
-                <!-- <div>Method Call</div>
-                <div>Expected Answer</div> -->
+                <h4>Casos de Prueba</h4>
                 <div class="case-container">
-                    <textarea id="case-0" placeholder="add a test case..."></textarea>
-                    <textarea id="answer-0" placeholder="enter the expected answer..."></textarea>
+                    <textarea id="case-0" placeholder="Agregue un caso de prueba..."></textarea>
+                    <textarea id="answer-0" placeholder="Escriba la respuesta esperada..."></textarea>
                     <div id="output-0"></div>
-                </div>  
+                </div>
 
                 <div class="case-container">
-                    <textarea id="case-1" placeholder="add a test case...">addTwo(5)</textarea>
-                    <textarea id="answer-1" placeholder="enter the expected answer...">7</textarea>
+                    <textarea id="case-1" placeholder="Agregue un caso de prueba...">addTwo(5)</textarea>
+                    <textarea id="answer-1" placeholder="Escriba la respuesta esperada...">7</textarea>
                     <div id="output-1"></div>
                 </div>
-                
+
                 <div class="case-container">
-                    <textarea id="case-2" placeholder="add a test case...">addTwo(0)</textarea>
-                    <textarea id="answer-2" placeholder="enter the expected answer...">1</textarea>
+                    <textarea id="case-2" placeholder="Agregue un caso de prueba...">addTwo(0)</textarea>
+                    <textarea id="answer-2" placeholder="Escriba la respuesta esperada...">1</textarea>
                     <div id="output-2"></div>
                 </div>
 
                 <div class="case-container">
-                    <textarea id="case-3" placeholder="add a test case..."></textarea>
-                    <textarea id="answer-3" placeholder="enter the expected answer..."></textarea>
+                    <textarea id="case-3" placeholder="Agregue un caso de prueba..."></textarea>
+                    <textarea id="answer-3" placeholder="Escriba la respuesta esperada..."></textarea>
                     <div id="output-3"></div>
                 </div>
 
                 <div class="case-container">
-                    <textarea id="case-4" placeholder="add a test case..."></textarea>
-                    <textarea id="answer-4" placeholder="enter the expected answer..."></textarea>
+                    <textarea id="case-4" placeholder="Agregue un caso de prueba..."></textarea>
+                    <textarea id="answer-4" placeholder="Escriba la respuesta esperada..."></textarea>
                     <div id="output-4"></div>
                 </div>  
             </div>
 
-            <div id="teacher-edit-notification">A teacher has edited your code.</div>
-            <button id="run-button">Run Code!</button>
+            <div id="teacher-edit-notification">Un profesor ha editado su código.</div>
+            <button id="run-button">¡Ejecutar Código!</button>
         </div>
 
         <div class="section" id="output-section">
-            <h1>Output</h1>
+            <h2>Salida</h2>
             <div id="output-div"><br /></div>
         </div>
     </div>

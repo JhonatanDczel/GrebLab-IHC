@@ -1,4 +1,3 @@
-
 const express = require('express');
 const lzString = require("../public/lzstring/lz-string");
 const path = require('path');
@@ -6,18 +5,13 @@ const path = require('path');
 const dataLookupByStudent = {};
 let antiDdosMultiplier = 1.0;
 
-// New app using express module
 const app = express();
 app.use(express.json());
-
-// Serve frontend
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../client')));
-app.use('/prism', express.static(__dirname + '../public/prism'));
+app.use('/prism', express.static(path.join(__dirname, '../public/prism')));
 
-// Set CORS policy
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
@@ -27,8 +21,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// Redireccionar a login.html cuando se acceda a la raíz
+app.get('/', function(req, res) {
+  res.redirect('/login.html');
+});
+
 app.get('/data', function (req, res) {
-  const uncompressedData = JSON.stringify([dataLookupByStudent, antiDdosMultiplier])
+  const uncompressedData = JSON.stringify([dataLookupByStudent, antiDdosMultiplier]);
   const compressedData = lzString.compressToUTF16(uncompressedData);
   res.end(compressedData);
 });
@@ -52,12 +51,27 @@ app.post("/ddos", function (req, res) {
     console.log("Updated anti-DDOS multiplier to", newVal);
   }
   res.end();
-})
+});
 
 app.delete('/', function(req, res) {
   dataLookupByStudent = {};
-})
+});
+
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    // Validar el correo electrónico y la contraseña
+    if (email === 'mikhailvelasque15@gmail.com' && password === 'contraseña') {
+        res.send({ success: true });
+    } else {
+        res.status(401).send({ success: false, message: 'Credenciales incorrectas' });
+    }
+});
+
+app.get('/check-auth', (req, res) => {
+    // Aquí podrías verificar si la sesión del usuario está activa
+    res.send({ authenticated: true }); // Cambia esto a 'false' si el usuario no está autenticado
+});
 
 app.listen(process.env.PORT || 3000, function() {
   console.log('server is running on port 3000');
-})
+});
